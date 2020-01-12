@@ -27,6 +27,7 @@ class Scraper
     self.get_oscar_winners
     OscarWinner.all.each do |course|
       if course.description && course.description != ""
+        puts ""
         puts "Category: #{course.category}"
         puts "  Winner: #{course.winner.text}"
         puts "  Description: #{course.description.text.strip}"
