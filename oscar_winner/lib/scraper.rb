@@ -25,12 +25,12 @@ class Scraper
       
   def print_oscar
     self.get_oscar_winners
-    OscarWinner.all.each do |course|
-      if course.description && course.description != ""
+    OscarWinner.all.each do |oscar|
+      if oscar.description && oscar.description != ""
         puts ""
-        puts "Category: #{course.category}"
-        puts "  Winner: #{course.winner.text}"
-        puts "  Description: #{course.description.text.strip}"
+        puts "Category: #{oscar.category}"
+        puts "  Winner: #{oscar.winner.text}"
+        puts "  Description: #{oscar.description.text.strip}"
       end
     end
   end
