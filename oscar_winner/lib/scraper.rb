@@ -22,19 +22,32 @@ class Scraper
       main.description = oscar.css(".views-field-title").first
     end
   end
-      
+       
   def print_oscar
-    self.get_oscar_winners
-    OscarWinner.all.each do |oscar|
-      if oscar.description && oscar.description != ""
+    OscarWinner.all.each do |course|
+      if course.description && course.description != ""
         puts ""
-        puts "Category: #{oscar.category}"
-        puts "  Winner: #{oscar.winner.text}"
-        puts "  Description: #{oscar.description.text.strip}"
+        puts "Category: #{course.category}"
+        puts "  Winner: #{course.winner.text}"
+        puts "  Description: #{course.description.text.strip}"
       end
     end
+  end
+  
+  def oscar_list
+    counter = 0
+    OscarWinner.all.each do |course|
+      if course.description && course.description != ""
+        counter += 1
+        puts ""
+        puts "#{counter}.  #{course.category}"
+      end
+    end
+  end
+  
+  def specific_oscar(id)
+    OscarWinner.all[id-1]
   end
 end
   
 
-Scraper.new.print_oscar
