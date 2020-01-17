@@ -46,7 +46,7 @@ class Scraper
   end
   
   def specific_oscar(id)
-    OscarWinner.all[id-1]
+    oscar = OscarWinner.all[id-1] 
      if oscar.description && oscar.description != ""
         puts ""
         puts "Category: #{oscar.category}"
