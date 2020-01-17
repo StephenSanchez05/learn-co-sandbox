@@ -4,6 +4,7 @@ class UI
   
   def start
     Scraper.new.get_oscar_winners
+    puts ""
     puts "Welcome to the Oscars"
     intro
   end
@@ -16,6 +17,7 @@ class UI
     
     if input == "all"
       Scraper.new.print_oscar
+      restart
       elsif input == "category"
       category
     else 
@@ -46,11 +48,20 @@ class UI
     input = gets.strip.to_i
     if input.between?(1,24)
     Scraper.new.specific_oscar(input)
+    OscarWinner.reset_all
+    restart
     else 
     selection
     end 
   end
+  
+  def restart
+    puts ""
+    puts "Would you like to start over? (y/n)"
+    input = gets.strip.downcase
+    
+    if input == "y"
+      start
+    end
+  end
 end
-
-
-UI.new.start
