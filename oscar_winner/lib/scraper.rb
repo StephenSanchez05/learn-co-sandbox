@@ -47,6 +47,12 @@ class Scraper
   
   def specific_oscar(id)
     OscarWinner.all[id-1]
+     if oscar.description && oscar.description != ""
+        puts ""
+        puts "Category: #{oscar.category}"
+        puts "  Winner: #{oscar.winner.text}"
+        puts "  Description: #{oscar.description.text.strip}"
+      end
   end
 end
   
