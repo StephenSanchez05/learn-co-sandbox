@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require '../lib/ui.rb'
+require_relative '../lib/ui.rb'
 
 UI.new.start

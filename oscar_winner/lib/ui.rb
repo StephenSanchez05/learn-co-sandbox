@@ -48,7 +48,6 @@ class UI
     input = gets.strip.to_i
     if input.between?(1,24)
     Scraper.new.specific_oscar(input)
-    OscarWinner.reset_all
     restart
     else 
     selection
@@ -61,6 +60,7 @@ class UI
     input = gets.strip.downcase
     
     if input == "y"
+      OscarWinner.reset_all
       start
     end
   end
